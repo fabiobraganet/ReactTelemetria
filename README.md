@@ -40,7 +40,7 @@ Antes de começar, certifique-se de ter as seguintes ferramentas instaladas em s
 1. **Clone o Repositório**
 
    ```bash
-   git clone https://github.com/seu-usuario/react-telemetria.git
+   git clone https://github.com/fabiobraganet/react-telemetria.git
    cd react-telemetria
    ```
 
@@ -60,7 +60,9 @@ Antes de começar, certifique-se de ter as seguintes ferramentas instaladas em s
 
    O arquivo `docker-compose.yml` configurará e iniciará os serviços mencionados acima.
 
-4. **Configurar Variáveis de Ambiente**
+   Você pode facilitar as coisas usando o start.sh e o stop.sh
+
+5. **Configurar Variáveis de Ambiente**
 
    Crie um arquivo `.env` na raiz do projeto e adicione as seguintes variáveis de ambiente:
 
@@ -68,7 +70,7 @@ Antes de começar, certifique-se de ter as seguintes ferramentas instaladas em s
    REACT_APP_OTEL_COLLECTOR_URL=http://localhost:4318/v1/traces
    REACT_APP_VICTORIAMETRICS_URL=http://localhost:8428
    REACT_APP_JAEGER_URL=http://localhost:16686
-   REACT_APP_GRAFANA_URL=http://localhost:3000
+   REACT_APP_GRAFANA_URL=http://localhost:3001
    ```
 
 ## Execução do Projeto
@@ -79,7 +81,7 @@ Após configurar o ambiente, você pode iniciar o projeto com o seguinte comando
 npm start
 ```
 
-A aplicação estará disponível em `http://localhost:3000`.
+A aplicação estará disponível em `http://localhost:3010`.
 
 ## Métricas e Monitoramento
 
@@ -140,6 +142,4 @@ Contribuições são bem-vindas! Sinta-se à vontade para enviar pull requests o
 4. Faça push para a branch criada (`git push origin feature/MinhaFeature`).
 5. Abra um Pull Request.
 
-## Licença
 
-Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
