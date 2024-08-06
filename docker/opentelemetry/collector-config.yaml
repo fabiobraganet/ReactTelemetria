@@ -1,0 +1,36 @@
+receivers:
+  otlp:
+    protocols:
+      http:
+        endpoint: "0.0.0.0:4318"
+        cors:
+          allowed_origins:
+            - "http://localhost:3010"
+      grpc:
+        endpoint: "0.0.0.0:4317"
+
+exporters:
+  logging:
+    verbosity: detailed
+  prometheusremotewrite: # Exportador para métricas
+    endpoint: "http://victoria-metrics:8428/api/v1/write"
+  zipkin:
+    endpoint: "http://jaeger:9411/api/v2/spans"
+
+processors:
+  batch:
+  memory_limiter:
+    limit_mib: 4000
+    spike_limit_mib: 500
+    check_interval: 5s
+
+service:
+  pipelines:
+    metrics:
+      receivers: [otlp]
+      processors: [batch, memory_limiter]
+      exporters: [logging, prometheusremotewrite]
+    traces:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [logging, zipkin]
